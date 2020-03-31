@@ -1,15 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+      rel="stylesheet"
+    />
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: "Lato";
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        overflow: visible !important;
+      }
+
+      :root {
+        --backgroundColor: #2d2d2d;
+        --accentColor: #999998;
+        --navHeight: 60px;
+        --greenColor: #018849;
+        --greenColorDark: #016235;
+      }
+
+      @media (max-width: 700px) {
+        :root {
+          --navHeight: 120px;
+        }
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: #eeeeee;
+      }
+      img {
+        object-fit: cover;
+      }
+
+      .pointer {
+        cursor: pointer;
+      }
+    </style>
   </head>
   <body>
     <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong
+        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
+        properly without JavaScript enabled. Please enable it to
+        continue.</strong
+      >
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
