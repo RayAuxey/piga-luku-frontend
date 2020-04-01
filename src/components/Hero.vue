@@ -8,7 +8,19 @@
     />
     <div class="cta">
       <img src="../assets/pigaluku3.svg" alt />
-      <button class="btn btn-green">SHOP</button>
+      <button
+        class="btn btn-green"
+        @click="
+          $router.push({
+            name: 'ProductList',
+            params: {
+              type: 'clothing'
+            }
+          })
+        "
+      >
+        SHOP
+      </button>
     </div>
   </div>
 </template>

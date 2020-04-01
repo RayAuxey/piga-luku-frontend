@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <Navbar />
+    <Navbar v-if="!($route.name === 'SignIn')" />
     <div class="router-view">
       <transition name="fade" mode="out-in">
         <router-view />
       </transition>
     </div>
-    <Footer />
+    <Footer v-if="!($route.name === 'SignIn')" />
   </div>
 </template>
 

@@ -9,9 +9,13 @@ export default new Vuex.Store({
   state: {
     selectedProduct: {},
     bagProducts: [],
-    subTotal: 0
+    subTotal: 0,
+    currentUser: null
   },
   mutations: {
+    setUser(state, payload) {
+      state.currentUser = payload;
+    },
     selectProduct(state, payload) {
       state.selectedProduct = payload;
     },

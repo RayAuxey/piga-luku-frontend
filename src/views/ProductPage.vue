@@ -62,6 +62,11 @@ export default {
     color: "RED"
   }),
   mounted() {
+    if (this.currentUser == null) {
+      this.$router.push({
+        name: "SignIn"
+      });
+    }
     this.checkIfInBag();
 
     if (this.selectedProduct.type === "shoes") {
@@ -89,7 +94,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(["selectedProduct", "bagProducts"])
+    ...mapState(["selectedProduct", "bagProducts", "currentUser"])
   }
 };
 </script>

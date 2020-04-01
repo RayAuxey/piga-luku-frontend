@@ -10,10 +10,21 @@
 <script>
 import Hero from "@/components/Hero.vue";
 import Explainer from "@/components/Explainer.vue";
+import { mapState } from "vuex";
 export default {
   components: {
     Hero,
     Explainer
+  },
+  mounted() {
+    if (this.currentUser == null) {
+      this.$router.push({
+        name: "SignIn"
+      });
+    }
+  },
+  computed: {
+    ...mapState(["currentUser"])
   }
 };
 </script>

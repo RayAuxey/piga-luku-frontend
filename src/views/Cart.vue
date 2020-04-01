@@ -55,7 +55,14 @@ export default {
     Product
   },
   computed: {
-    ...mapState(["bagProducts", "subTotal"])
+    ...mapState(["bagProducts", "subTotal", "currentUser"])
+  },
+  mounted() {
+    if (this.currentUser == null) {
+      this.$router.push({
+        name: "SignIn"
+      });
+    }
   }
 };
 </script>

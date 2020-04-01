@@ -3,9 +3,10 @@
     <div class="text">
       <div class="heading">WHO WE ARE</div>
 
-      <div
-        class="desc"
-      >Piga Luku (Sheng' for 'dress to impress') is a company that deals with boy's and men's clothing</div>
+      <div class="desc">
+        Piga Luku (Sheng' for 'dress to impress') is a company that deals with
+        boy's and men's clothing
+      </div>
     </div>
 
     <div class="items">
@@ -16,7 +17,19 @@
         />
         <div class="title">We have the best looks in town.</div>
         <div class="sub-title">No one else can top this</div>
-        <button class="btn btn-green">COP A SHIRT</button>
+        <button
+          class="btn btn-green"
+          @click="
+            $router.push({
+              name: 'ProductList',
+              params: {
+                type: 'clothing'
+              }
+            })
+          "
+        >
+          BUY CLOTHING
+        </button>
       </div>
       <div class="item">
         <img
@@ -25,7 +38,19 @@
         />
         <div class="title">We have the best looks in town.</div>
         <div class="sub-title">No one else can top this</div>
-        <button class="btn btn-green">COP A SHIRT</button>
+        <button
+          class="btn btn-green"
+          @click="
+            $router.push({
+              name: 'ProductList',
+              params: {
+                type: 'shoes'
+              }
+            })
+          "
+        >
+          BUY SHOES
+        </button>
       </div>
       <div class="item">
         <img
@@ -34,7 +59,19 @@
         />
         <div class="title">We have the best looks in town.</div>
         <div class="sub-title">No one else can top this</div>
-        <button class="btn btn-green">COP A SHIRT</button>
+        <button
+          class="btn btn-green"
+          @click="
+            $router.push({
+              name: 'ProductList',
+              params: {
+                type: 'activewear'
+              }
+            })
+          "
+        >
+          BUY ACTIVEWEAR
+        </button>
       </div>
     </div>
   </div>

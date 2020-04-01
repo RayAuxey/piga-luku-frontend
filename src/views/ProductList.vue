@@ -26,6 +26,7 @@
 import axios from "axios";
 import Product from "@/components/Product.vue";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
+import { mapState } from "vuex";
 
 export default {
   data: () => ({
@@ -54,7 +55,15 @@ export default {
     }
   },
   created() {
+    if (this.currentUser == null) {
+      this.$router.push({
+        name: "SignIn"
+      });
+    }
     this.fetchProducts();
+  },
+  computed: {
+    ...mapState(["currentUser"])
   },
   watch: {
     "$route.params.type": function() {
