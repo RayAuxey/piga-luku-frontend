@@ -1,8 +1,13 @@
 <template>
   <div class="navbar">
-    <div class="logo pointer" @click="$router.push({
-      name: 'Home'
-    })">
+    <div
+      class="logo pointer"
+      @click="
+        $router.push({
+          name: 'Home'
+        })
+      "
+    >
       <img src="../assets/pigaluku.svg" alt />
       <!-- <h1>Piga Luku</h1> -->
     </div>
@@ -10,38 +15,67 @@
     <div class="categories">
       <div
         class="category"
-        @click="$router.push({
-      name: 'ProductList',
-      params: {
-        type: 'clothing'
-      }
-      
-    })"
-      >Clothing</div>
+        :class="{ active: currentRoute === 'clothing' }"
+        @click="
+          $router.push({
+            name: 'ProductList',
+            params: {
+              type: 'clothing'
+            }
+          })
+        "
+      >
+        Clothing
+      </div>
       <div
         class="category"
-        @click="$router.push({
-          name: 'ProductList',params: {type: 'shoes'}
-          })"
-      >Shoes</div>
+        :class="{ active: currentRoute === 'shoes' }"
+        @click="
+          $router.push({
+            name: 'ProductList',
+            params: { type: 'shoes' }
+          })
+        "
+      >
+        Shoes
+      </div>
       <div
         class="category"
-        @click="$router.push({
-      name: 'ProductList' ,params: {type: 'accessories'}})"
-      >Accessories</div>
+        :class="{ active: currentRoute === 'accessories' }"
+        @click="
+          $router.push({
+            name: 'ProductList',
+            params: { type: 'accessories' }
+          })
+        "
+      >
+        Accessories
+      </div>
       <div
         class="category"
-        @click="$router.push({
-      name: 'ProductList',params: {type: 'activewear'}})"
-      >Activewear</div>
+        :class="{ active: currentRoute === 'activewear' }"
+        @click="
+          $router.push({
+            name: 'ProductList',
+            params: { type: 'activewear' }
+          })
+        "
+      >
+        Activewear
+      </div>
     </div>
 
     <div class="icons">
       <i class="pointer fas fa-user-alt fa-2x"></i>
-      <div class="cart-icon" @click="$router.push({
-      name: 'Cart'
-    })">
-        <div class="num-items">1</div>
+      <div
+        class="cart-icon"
+        @click="
+          $router.push({
+            name: 'Cart'
+          })
+        "
+      >
+        <div class="num-items">{{ bagProducts.length }}</div>
         <i class="pointer fas fa-shopping-cart fa-2x"></i>
       </div>
     </div>
@@ -49,11 +83,33 @@
 </template>
 
 <script>
-export default {};
+import { mapState } from "vuex";
+export default {
+  data: () => ({
+    currentRoute: ""
+  }),
+  methods: {
+    getParam() {
+      if (this.$route.name === "ProductList") {
+        this.currentRoute = this.$route.params.type;
+      } else {
+        this.currentRoute = "";
+      }
+    }
+  },
+  computed: {
+    ...mapState(["bagProducts"])
+  },
+  watch: {
+    $route() {
+      this.getParam();
+    }
+  }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style  lang="scss">
+<style lang="scss">
 .navbar {
   z-index: 10;
   position: fixed;
@@ -96,6 +152,11 @@ export default {};
         background: white;
         color: #2d2d2d;
       }
+
+      &.active {
+        background: var(--greenColor);
+        color: white;
+      }
     }
   }
 
@@ -126,14 +187,16 @@ export default {};
     position: relative;
     .num-items {
       position: absolute;
-      background: green;
+      background: var(--greenColor);
+      border: 1px solid white;
       display: flex;
+      line-height: 0;
       justify-content: center;
       align-items: center;
       color: white;
-      font-size: 0.5em;
+      font-size: 0.7em;
       font-weight: 700;
-      right: 0;
+      right: 10px;
       top: 0;
       width: 20px;
       height: 20px;

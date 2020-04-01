@@ -1,57 +1,98 @@
 <template>
-  <div class="product">
-    <img
-      class="image"
-      src="https://images.asos-media.com/groups/asos-design-co-ord-in-burgundy-with-mustard-white-side-tape/28880-group-1?$n_320w$&wid=513&fit=constrain"
-      alt
-    />
-    <div class="buy-card">
-      <p
-        class="description"
-      >ASOS DESIGN co-ord sweatshirt in burgundy with mustard & white side tape</p>
-      <div class="price">KES 4000</div>
-      <div class="color">
-        <div class="title">COLOUR:</div>
-        <select name="size" id>
-          <option>XXS</option>
-          <option>XS</option>
-          <option>SM</option>
-        </select>
-      </div>
-      <div class="size">
-        <div class="title">SIZE:</div>
-        <select name="size" id>
-          <option>XXS</option>
-          <option>XS</option>
-          <option>SM</option>
-        </select>
-      </div>
+  <div class="page">
+    <div class="product">
+      <img class="image" :src="selectedProduct.imageUrl" alt />
+      <div class="buy-card">
+        <p class="description">{{ selectedProduct.name }}</p>
+        <div class="price">KES {{ selectedProduct.price }}</div>
+        <div class="color">
+          <div class="title">COLOUR:</div>
+          <select name="color" v-model="color">
+            <option>RED</option>
+            <option>GREEN</option>
+            <option>BLACK</option>
+            <option>PURPLE</option>
+            <option>BLACK</option>
+          </select>
+        </div>
+        <div class="size">
+          <div class="title">SIZE:</div>
+          <select name="size" v-model="size">
+            <template v-if="!(selectedProduct.type === 'shoes')">
+              <option>XXS</option>
+              <option>XS</option>
+              <option>SM</option>
+              <option>M</option>
+              <option>L</option>
+              <option>XL</option>
+            </template>
+            <template v-else>
+              <option v-for="i in 6" :selected="i === 1" :key="i"
+                >UK {{ 6 + i }}</option
+              >
+            </template>
+          </select>
+        </div>
 
-      <button class="add">ADD TO BAG</button>
+        <button @click="addProduct" class="add" :class="{ added: isAdded }">
+          {{ !isAdded ? "ADD TO BAG" : "ADDED" }}
+        </button>
 
-      <div class="product-details">
-        <div class="title">PRODUCT DETAILS</div>
-        <div class="item">Hoodie by adidas Originals</div>
-        <ul>
-          <li>Throw on and go</li>
-          <li>Drawstring hood</li>
-          <li>Over-the-head style</li>
-          <li>Trefoil logo</li>
-          <li>3-Stripes to sleeve</li>
-          <li>Side pockets</li>
-          <li>Fitted trims</li>
-          <li>Regular fit</li>
-          <li>True to size</li>
-        </ul>
+        <div class="product-details">
+          <div class="title">PRODUCT DETAILS</div>
+          <div class="item">{{ selectedProduct.description }}</div>
+          <ul>
+            <li v-for="feature in selectedProduct.features" :key="feature">
+              {{ feature }}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
-</script>
+import { mapState, mapMutations } from "vuex";
 
+export default {
+  data: () => ({
+    isAdded: false,
+    size: "SM",
+    color: "RED"
+  }),
+  mounted() {
+    this.checkIfInBag();
+
+    if (this.selectedProduct.type === "shoes") {
+      this.size = "UK 7";
+    }
+  },
+  methods: {
+    ...mapMutations(["addToBag"]),
+    checkIfInBag() {
+      this.isAdded = this.bagProducts.some(
+        p => p._id === this.selectedProduct._id
+      );
+      console.log(this.isAdded);
+    },
+    addProduct() {
+      if (!this.isAdded) {
+        this.addToBag({
+          ...this.selectedProduct,
+          color: this.color,
+          size: this.size,
+          quantity: 1
+        });
+        this.checkIfInBag();
+      }
+    }
+  },
+  computed: {
+    ...mapState(["selectedProduct", "bagProducts"])
+  }
+};
+</script>
 
 <style lang="scss" scoped>
 ul {
@@ -112,6 +153,11 @@ ul {
       font-weight: bold;
       &:hover {
         background: var(--greenColorDark);
+      }
+
+      &.added {
+        background: #ccc;
+        color: black;
       }
     }
     button,

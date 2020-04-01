@@ -1,43 +1,55 @@
 <template>
   <div class="product">
-    <img
-      src="https://images.asos-media.com/products/adidas-originals-outline-central-logo-hoodie-in-black/13161197-1-black"
-      alt
-    />
+    <img :src="product.imageUrl" alt />
     <div class="info">
-      <div class="price">KES 4000</div>
-      <div
-        class="description"
-      >ASOS DESIGN co-ord sweatshirt in burgundy with mustard & white side tape</div>
+      <div class="price">KES {{ product.price }}</div>
+      <div class="description">{{ product.name }}</div>
       <div class="customize">
         <div class="color">
           <!-- Colour: -->
-          <select name="color" id>
-            <option>XXS</option>
-            <option>XS</option>
-            <option>SM</option>
+          <select name="color" :value="product.color" @change="changeColor">
+            <option>RED</option>
+            <option>GREEN</option>
+            <option>BLACK</option>
+            <option>PURPLE</option>
+            <option>BLACK</option>
           </select>
         </div>
 
         <div class="size">
           <!-- Size: -->
-          <select name="size" id>
-            <option>XXS</option>
-            <option>XS</option>
-            <option>SM</option>
+          <select name="size" :value="product.size" @change="changeSize">
+            <template v-if="!(product.type === 'shoes')">
+              <option>XXS</option>
+              <option>XS</option>
+              <option>SM</option>
+              <option>M</option>
+              <option>L</option>
+              <option>XL</option>
+            </template>
+            <template v-else>
+              <option v-for="i in 6" :selected="i === 1" :key="i"
+                >UK {{ 6 + i }}</option
+              >
+            </template>
           </select>
         </div>
 
         <div class="quantity">
           <div>Qty:</div>
-          <select name="qty" id>
-            <option v-for="i in 10" :key="i">{{i}}</option>
+          <select @change="changeQty" name="qty" id>
+            <option
+              :selected="bagProducts[index].quantity === i"
+              v-for="i in 10"
+              :key="i"
+              >{{ i }}</option
+            >
           </select>
         </div>
       </div>
     </div>
-
-    <i class="fas fa-times fa-2x pointer"></i>
+    <div class="spacer"></div>
+    <i @click="removeFromBag(index)" class="fas fa-times fa-2x pointer"></i>
     <!-- <div class="cancel">
       <img class="times" src="../../assets/times.svg" alt />
     </div>-->
@@ -45,7 +57,25 @@
 </template>
 
 <script>
-export default {};
+import { mapMutations, mapState } from "vuex";
+export default {
+  props: ["product", "index"],
+  methods: {
+    ...mapMutations(["removeFromBag", "setQty", "setColor", "setSize"]),
+    changeQty(e) {
+      this.setQty({ index: this.index, qty: Number(e.target.value) });
+    },
+    changeColor(e) {
+      this.setColor({ index: this.index, color: e.target.value });
+    },
+    changeSize(e) {
+      this.setSize({ index: this.index, color: e.target.value });
+    }
+  },
+  computed: {
+    ...mapState(["bagProducts"])
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -54,6 +84,10 @@ export default {};
   margin-bottom: 1rem;
   border-bottom: 1px solid #ccc;
   padding-bottom: 1rem;
+
+  .spacer {
+    flex: 1;
+  }
 
   img {
     width: 20%;
@@ -75,14 +109,15 @@ export default {};
 
     .customize {
       display: flex;
+
       select {
         cursor: pointer;
         padding: 0.5rem;
         margin-right: 1rem;
         background: transparent;
         border: none;
-        border-right: 1px solid #ccc;
-        border-left: 1px solid #ccc;
+        border: 1px solid #ccc;
+        // border-left: 1px solid #ccc;
         outline: none;
       }
       > * {

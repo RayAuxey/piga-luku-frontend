@@ -41,13 +41,13 @@ export default {
   margin-top: 60px;
 
   max-width: 1024px;
-  min-height: 100vh;
+  min-height: calc(100vh - var(--navHeight));
 }
 
 @media (max-width: 700px) {
   .router-view {
     margin-top: 120px;
-    min-height: 100vh;
+    min-height: calc(100vh - var(--navHeight));
   }
 }
 #nav {

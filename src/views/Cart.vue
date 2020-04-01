@@ -4,12 +4,17 @@
       <div class="title">MY BAG</div>
 
       <div class="products">
-        <Product v-for="i in 5" :key="i" />
+        <Product
+          v-for="(product, i) in bagProducts"
+          :key="product._id"
+          :product="product"
+          :index="i"
+        />
       </div>
 
       <div class="sub-total">
         <div class="title-">SUB-TOTAL</div>
-        <div class="value">KES 9000</div>
+        <div class="value">KES {{ subTotal }}</div>
       </div>
     </div>
 
@@ -17,7 +22,7 @@
       <div class="title">TOTAL</div>
       <div class="sub-total">
         <div class="title-">Sub-total</div>
-        <div class="price">KES 9000</div>
+        <div class="price">KES {{ subTotal }}</div>
       </div>
       <div class="phone-number">
         <div class="title-">Mpesa Number</div>
@@ -30,7 +35,10 @@
         <div class="title-">WE'LL SOON ACCEPT:</div>
 
         <div class="list">
-          <img src="https://assets.asosservices.com/asos-finance/images/marketing/single.png" alt />
+          <img
+            src="https://assets.asosservices.com/asos-finance/images/marketing/single.png"
+            alt
+          />
         </div>
       </div>
     </div>
@@ -38,15 +46,21 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 import Product from "@/components/cart/Product.vue";
+
 export default {
   components: {
     Product
+  },
+  computed: {
+    ...mapState(["bagProducts", "subTotal"])
   }
 };
 </script>
 
-<style lang="scss" >
+<style lang="scss">
 .cart {
   display: flex;
   padding: 1rem;
