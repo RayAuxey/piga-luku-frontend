@@ -24,9 +24,7 @@
             }
           })
         "
-      >
-        Clothing
-      </div>
+      >Clothing</div>
       <div
         class="category"
         :class="{ active: currentRoute === 'shoes' }"
@@ -36,9 +34,7 @@
             params: { type: 'shoes' }
           })
         "
-      >
-        Shoes
-      </div>
+      >Shoes</div>
       <div
         class="category"
         :class="{ active: currentRoute === 'accessories' }"
@@ -48,9 +44,7 @@
             params: { type: 'accessories' }
           })
         "
-      >
-        Accessories
-      </div>
+      >Accessories</div>
       <div
         class="category"
         :class="{ active: currentRoute === 'activewear' }"
@@ -60,13 +54,19 @@
             params: { type: 'activewear' }
           })
         "
-      >
-        Activewear
-      </div>
+      >Activewear</div>
     </div>
 
     <div class="icons">
-      <i class="pointer fas fa-user-alt fa-2x"></i>
+      <div class="user-icon">
+        <div class="dropdown">
+          <div class="name">{{currentUser.firstname}} {{currentUser.lastname}}</div>
+          <div class="email">{{currentUser.email}}</div>
+          <button @click="setUser(null)" class="btn btn-green">LOG OUT</button>
+        </div>
+        <i class="pointer fas fa-user-alt fa-2x"></i>
+      </div>
+
       <div
         class="cart-icon"
         @click="
@@ -83,12 +83,13 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 export default {
   data: () => ({
     currentRoute: ""
   }),
   methods: {
+    ...mapMutations(["setUser"]),
     getParam() {
       if (this.$route.name === "ProductList") {
         this.currentRoute = this.$route.params.type;
@@ -98,11 +99,18 @@ export default {
     }
   },
   computed: {
-    ...mapState(["bagProducts"])
+    ...mapState(["bagProducts", "currentUser"])
   },
   watch: {
     $route() {
       this.getParam();
+    },
+    currentUser(to) {
+      if (to == null) {
+        this.$router.push({
+          name: "SignIn"
+        });
+      }
     }
   }
 };
@@ -180,6 +188,40 @@ export default {
     i {
       color: var(--accentColor);
       margin: 0 1rem;
+    }
+  }
+
+  .user-icon {
+    position: relative;
+
+    .dropdown {
+      position: absolute;
+      transform-origin: top right;
+      padding: 1rem;
+      transform: scale(0);
+      top: 100%;
+      right: 0;
+      transition: all 200ms ease-in-out;
+
+      background: var(--backgroundColor);
+      display: flex;
+      flex-direction: column;
+      border: 1px solid black;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.493);
+      color: white;
+
+      .name {
+        font-weight: 900;
+      }
+
+      .btn {
+        margin-top: 1rem;
+        width: 200px;
+      }
+    }
+
+    &:hover .dropdown {
+      transform: scale(1);
     }
   }
 

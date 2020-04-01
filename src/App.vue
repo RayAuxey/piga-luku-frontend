@@ -66,12 +66,17 @@ export default {
 .btn {
   //  background: #018849;
   border: none;
-  padding: 1.5rem;
   line-height: 0;
   // color: white;
   outline: none;
   cursor: pointer;
   font-weight: bold;
+  letter-spacing: 2px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   // &:hover {
   //   // background: #026b3a;
   // }

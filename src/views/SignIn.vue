@@ -1,7 +1,7 @@
 <template>
   <div class="sign-up">
-    <div class="form">
-      <img src="../assets/pigaluku.svg" alt="" class="logo" />
+    <form class="form" @submit.prevent="login">
+      <img src="../assets/pigaluku.svg" alt class="logo" />
 
       <input type="email" placeholder="Email" v-model="email" />
       <template v-if="!isLogin">
@@ -9,18 +9,22 @@
         <input type="text" placeholder="Last Name" v-model="lastname" />
       </template>
       <input type="password" placeholder="Password" v-model="password" />
-      <button @click="login" class="btn">
-        {{ isLogin ? "SIGN IN" : "SIGN UP" }}
+      <button class="btn btn-green">
+        <div v-if="loading" class="loading">
+          <img src="../assets/loading.svg" alt class="logo" />
+        </div>
+
+        <div v-else>{{ isLogin ? "SIGN IN" : "SIGN UP" }}</div>
       </button>
       <div class="chooser" @click="isLogin = !isLogin">
         {{
-          isLogin
-            ? "Don't have an account? Sign Up"
-            : "Already have an account? Log In"
+        isLogin
+        ? "Don't have an account? Sign Up"
+        : "Already have an account? Log In"
         }}
       </div>
-    </div>
-    <img src="../assets/sign_up.jpg" class="side" alt="" />
+    </form>
+    <img src="../assets/sign_up.jpg" class="side" alt />
   </div>
 </template>
 
@@ -34,7 +38,8 @@ export default {
     email: "",
     password: "",
     firstname: "",
-    lastname: ""
+    lastname: "",
+    loading: false
   }),
   methods: {
     ...mapMutations(["setUser"]),
@@ -53,6 +58,7 @@ export default {
       }
 
       try {
+        this.loading = true;
         const res = await axios.post(
           `http://localhost:7003/api/user/${
             this.isLogin ? "signin" : "signup"
@@ -71,6 +77,7 @@ export default {
       } catch (error) {
         console.log(error.message);
       }
+      this.loading = false;
     }
   }
 };
@@ -107,6 +114,18 @@ export default {
     .btn {
       margin-top: 1rem;
       width: 75%;
+      max-width: 500px;
+    }
+
+    .btn {
+      .loading {
+        width: 25px;
+        height: 25px;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
     }
 
     input {
