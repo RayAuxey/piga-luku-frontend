@@ -1,12 +1,25 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
+    <Hero />
+    <div class="content">
+      <Explainer />
+    </div>
   </div>
 </template>
 
 <script>
-export default {};
+import Hero from "@/components/Hero.vue";
+import Explainer from "@/components/Explainer.vue";
+export default {
+  components: {
+    Hero,
+    Explainer
+  }
+};
 </script>
 
 <style lang="scss" scoped>
+.content {
+  margin-top: 100vh;
+}
 </style>

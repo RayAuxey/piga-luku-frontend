@@ -28,6 +28,22 @@
       </div>
 
       <button class="add">ADD TO BAG</button>
+
+      <div class="product-details">
+        <div class="title">PRODUCT DETAILS</div>
+        <div class="item">Hoodie by adidas Originals</div>
+        <ul>
+          <li>Throw on and go</li>
+          <li>Drawstring hood</li>
+          <li>Over-the-head style</li>
+          <li>Trefoil logo</li>
+          <li>3-Stripes to sleeve</li>
+          <li>Side pockets</li>
+          <li>Fitted trims</li>
+          <li>Regular fit</li>
+          <li>True to size</li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -36,7 +52,12 @@
 export default {};
 </script>
 
+
 <style lang="scss" scoped>
+ul {
+  margin: 0;
+  padding-inline-start: 20px;
+}
 .product {
   padding: 1rem;
   display: flex;
@@ -96,6 +117,17 @@ export default {};
     button,
     select {
       width: 100%;
+    }
+
+    .product-details {
+      margin-top: 2rem;
+      .title {
+        margin-bottom: 0.5rem;
+      }
+
+      ul {
+        margin-top: 0.2rem;
+      }
     }
   }
 }

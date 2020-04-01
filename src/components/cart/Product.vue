@@ -38,6 +38,9 @@
     </div>
 
     <i class="fas fa-times fa-2x pointer"></i>
+    <!-- <div class="cancel">
+      <img class="times" src="../../assets/times.svg" alt />
+    </div>-->
   </div>
 </template>
 
@@ -61,11 +64,13 @@ export default {};
     .price {
       font-size: 1.2em;
       font-weight: 900;
+      letter-spacing: 2px;
       margin-bottom: 1rem;
     }
 
     .description {
       margin-bottom: 1rem;
+      font-weight: 300;
     }
 
     .customize {
@@ -89,6 +94,11 @@ export default {};
       }
     }
   }
+
+  .times {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 @media (max-width: 700px) {
@@ -104,6 +114,10 @@ export default {};
       position: absolute;
       background: white;
       padding: 10px;
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
       right: 0;
       top: 0;
     }
