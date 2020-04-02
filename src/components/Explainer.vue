@@ -3,9 +3,14 @@
     <div class="text">
       <div class="heading">WHO WE ARE</div>
 
-      <div
-        class="desc"
-      >We believe in a world where you have total freedom to be you, without judgement. To experiment. To express yourself. To be brave and grab life as the extraordinary adventure it is. So we make sure everyone has an equal chance to discover all the amazing things they’re capable of – no matter who they are, where they’re from or what looks they like to boss. We exist to give you the confidence to be whoever you want to be.</div>
+      <div class="desc">
+        We believe in a world where you have total freedom to be you, without
+        judgement. To experiment. To express yourself. To be brave and grab life
+        as the extraordinary adventure it is. So we make sure everyone has an
+        equal chance to discover all the amazing things they’re capable of – no
+        matter who they are, where they’re from or what looks they like to boss.
+        We exist to give you the confidence to be whoever you want to be.
+      </div>
     </div>
 
     <div class="items">
@@ -26,7 +31,9 @@
               }
             })
           "
-        >BUY CLOTHING</button>
+        >
+          BUY CLOTHING
+        </button>
       </div>
       <div class="item">
         <img
@@ -45,7 +52,9 @@
               }
             })
           "
-        >BUY SHOES</button>
+        >
+          BUY SHOES
+        </button>
       </div>
       <div class="item">
         <img
@@ -64,7 +73,9 @@
               }
             })
           "
-        >BUY ACTIVEWEAR</button>
+        >
+          BUY ACTIVEWEAR
+        </button>
       </div>
     </div>
   </div>
@@ -77,6 +88,10 @@ export default {};
 <style lang="scss" scoped>
 .explain {
   padding: 3rem 0;
+
+  @media (max-width: 700px) {
+    padding: 1rem 0;
+  }
   .text {
     display: flex;
     flex-direction: column;
@@ -85,12 +100,17 @@ export default {};
     .heading {
       font-weight: 900;
       font-size: 2em;
+      margin: 1rem;
     }
 
     .desc {
       font-weight: 400;
       letter-spacing: 1px;
       width: 60%;
+
+      @media (max-width: 700px) {
+        width: 90%;
+      }
     }
   }
 }
@@ -124,6 +144,10 @@ export default {};
   @media (max-width: 700px) {
     .item {
       width: 100%;
+    }
+
+    .desc {
+      width: 90%;
     }
   }
 }

@@ -11,11 +11,7 @@
     </div>
 
     <div v-else-if="products.length > 0" class="products">
-      <Product
-        v-for="product in products"
-        :key="product._id"
-        :product="product"
-      />
+      <Product v-for="product in products" :key="product._id" :product="product" />
     </div>
 
     <div v-else class="no-result">No Results for {{ search }}</div>
@@ -43,7 +39,7 @@ export default {
       try {
         this.loading = true;
         const res = await axios.get(
-          `http://localhost:7003/api/products/${
+          `https://pigaluku.horizonedge.tech/api/products/${
             this.$route.params.type
           }?search=${search || ""}`
         );

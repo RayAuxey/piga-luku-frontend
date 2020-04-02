@@ -60,7 +60,7 @@ export default {
       try {
         this.loading = true;
         const res = await axios.post(
-          `http://localhost:7003/api/user/${
+          `https://pigaluku.horizonedge.tech/api/user/${
             this.isLogin ? "signin" : "signup"
           }`,
           {
@@ -75,7 +75,8 @@ export default {
           name: "Home"
         });
       } catch (error) {
-        console.log(error.message);
+        alert("Please make sure you entered correct credetials");
+        // console.log(error.message);
       }
       this.loading = false;
     }

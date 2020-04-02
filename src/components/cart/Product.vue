@@ -109,6 +109,8 @@ export default {
 
     .customize {
       display: flex;
+      flex-wrap: wrap;
+      // justify-content: space-between;
 
       select {
         cursor: pointer;
@@ -124,7 +126,7 @@ export default {
         display: flex;
         align-items: center;
         > * {
-          margin-right: 0.5rem;
+          margin: 1rem 0.5rem 0 0;
         }
       }
     }

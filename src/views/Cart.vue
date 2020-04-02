@@ -71,6 +71,10 @@ export default {
 .cart {
   display: flex;
   padding: 1rem;
+
+  @media (max-width: 700px) {
+    padding: 0;
+  }
   align-items: flex-start;
 
   .title {
