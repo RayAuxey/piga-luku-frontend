@@ -27,24 +27,22 @@
               <option>XL</option>
             </template>
             <template v-else>
-              <option v-for="i in 6" :selected="i === 1" :key="i"
-                >UK {{ 6 + i }}</option
-              >
+              <option v-for="i in 6" :selected="i === 1" :key="i">UK {{ 6 + i }}</option>
             </template>
           </select>
         </div>
 
-        <button @click="addProduct" class="add" :class="{ added: isAdded }">
-          {{ !isAdded ? "ADD TO BAG" : "ADDED" }}
-        </button>
+        <button
+          @click="addProduct"
+          class="add"
+          :class="{ added: isAdded }"
+        >{{ !isAdded ? "ADD TO BAG" : "ADDED" }}</button>
 
         <div class="product-details">
           <div class="title">PRODUCT DETAILS</div>
-          <div class="item">{{ selectedProduct.description }}</div>
+          <div class="item" style="letter-spacing: 1px">{{ selectedProduct.description }}</div>
           <ul>
-            <li v-for="feature in selectedProduct.features" :key="feature">
-              {{ feature }}
-            </li>
+            <li v-for="feature in selectedProduct.features" :key="feature">{{ feature }}</li>
           </ul>
         </div>
       </div>
@@ -103,6 +101,10 @@ export default {
 ul {
   margin: 0;
   padding-inline-start: 20px;
+  li {
+    letter-spacing: 1px;
+    // font-weight: 300;
+  }
 }
 .product {
   padding: 1rem;

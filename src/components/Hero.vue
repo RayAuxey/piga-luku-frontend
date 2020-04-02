@@ -1,6 +1,6 @@
 <template>
   <div class="hero">
-    <img class="hero-img" src="../assets/hero_image.jpg" alt />
+    <img class="hero-img" src="../assets/hero_image.png" alt />
     <img
       class="hero-mob"
       src="https://images.asos-media.com/products/nike-air-force-1-07-gore-tex-trainers-in-sand-ck2630-700/12489509-1-sand?$n_320w$&wid=600&fit=constrain"
@@ -18,9 +18,7 @@
             }
           })
         "
-      >
-        SHOP
-      </button>
+      >SHOP NOW</button>
     </div>
   </div>
 </template>
@@ -50,7 +48,7 @@ export default {};
 
   .cta {
     position: absolute;
-    width: 25%;
+    width: 20%;
     transform: translateX(-50%) translateY(-50%);
     left: 50%;
     top: 50%;

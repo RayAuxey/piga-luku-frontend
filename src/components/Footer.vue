@@ -23,20 +23,28 @@
       </div>-->
 
       <div class="column">
-        <div class="title">THE PIGA LUKU MOVEMENT</div>
+        <div class="title">HELP & INFORMATION</div>
         <ul class="contents">
-          <li>PIGA LUKU Blog</li>
-          <li>Press</li>
-          <li>FAQs</li>
-          <li>Contact</li>
+          <li @click="$router.push({
+            name: 'Team'
+          })">Meet The Team</li>
+          <li @click="$router.push({
+            name: 'Faqs'
+          })">Return Policy</li>
+          <li @click="$router.push({
+            name: 'Faqs'
+          })">FAQs</li>
+          <li @click="$router.push({
+            name: 'ContactUs'
+          })">Contact Us</li>
         </ul>
       </div>
       <div class="column">
-        <div class="title">GET INVOLVED</div>
+        <div class="title">MORE FROM PIGA LUKU</div>
         <ul class="contents">
-          <li>Donate</li>
+          <li>Investors Site</li>
           <li>Careers</li>
-          <li>PIGA LUKU Campaign</li>
+          <li>Corporate Responsibility</li>
         </ul>
       </div>
 
@@ -91,6 +99,9 @@ ul {
   li {
     margin: 0.5rem 0;
     cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -118,6 +129,7 @@ ul {
     .title {
       color: #777;
       font-weight: 900;
+      margin: 0;
     }
   }
 }
@@ -164,6 +176,7 @@ ul {
 
   i {
     margin-right: 2rem;
+    transform: scale(1.5);
   }
 }
 
@@ -182,9 +195,11 @@ ul {
   .content {
     display: flex;
     margin: 0;
+
     > * {
       cursor: pointer;
       color: var(--backgroundColor);
+
       font-weight: 900;
     }
     :nth-child(1) {

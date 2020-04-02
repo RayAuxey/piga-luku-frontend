@@ -58,17 +58,21 @@
     </div>
 
     <div class="icons">
-      <div class="user-icon">
+      <div class="user-icon pointer">
         <div class="dropdown">
           <div class="name">{{currentUser.firstname}} {{currentUser.lastname}}</div>
           <div class="email">{{currentUser.email}}</div>
           <button @click="setUser(null)" class="btn btn-green">LOG OUT</button>
         </div>
-        <i class="pointer fas fa-user-alt fa-2x"></i>
+        <!-- <i class="pointer fas fa-user-alt fa-2x"></i> -->
+        <img
+          class="icon"
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAACO0lEQVRoge2YP2sUQRiHfxONXe4UwSaFnX/uQLASopV2CobU+gFsLMTvkCrRg3wAG2sVEUSs1dReclHBQkuJeCQmzZ15LHYuJOPOJvvnnFXmgSkW3n3fZ4aZ3ZmRIpFI5L8CaAMPgRXgp20rwAOgFdrPC3AMWAKG+BkCHWAytO8+rPzrDHGXV7XqhB35vHRCe0vanfPutFkFbgJTts0CPSdmAJwP7S+SBevKN1LimsCaE7sYwtkVW3WkZjNi55zY7t909UltOFJTGbENJ3ajbP2JsglCU0UHvjrPVzNirznPXyqoXw6SP+xeekAzJa4JfHBiF0I4u2It/vyMrtkF27BtLkV+AJwL7S9JItke5CX8J3QEMEmyPTgsL6nTVkLa7UTHTg0fA5I1Uy/5vZCsiUWgC2za1gUWqMucj0QikcowZRMARyRdkDQjqSXpjKTTkk5IGm2tNyX9ULJ5+ySpJ+mtpPfGmF9lHXJDcky8BTwD+jn+wC594KnN5T1HVCneBh4B2yWkfWzb3O1xiE8DT4CdMYi77Nha04dxO3ANALclLUk6nhG2LumNpGVJH5XM82+SRkfGhqRTks7adknSFUknM3L2Jd01xjw+yDFL/n7GSH0G5oGLQO6PAWDsu/M2l497ReUvk35N+I7knqey8zQwYXMup9QbAjNFkr5wEm0Bd4qMdo6axtbYcmo/L5Lsu5Pk+hicfbVvOLXXfbHe0QTYF2jM2Ea+TP2jRRPWhXixFZp/vgORSCQSlt+718lyAjWnpwAAAABJRU5ErkJggg=="
+        />
       </div>
 
       <div
-        class="cart-icon"
+        class="cart-icon pointer"
         @click="
           $router.push({
             name: 'Cart'
@@ -76,7 +80,7 @@
         "
       >
         <div class="num-items">{{ bagProducts.length }}</div>
-        <i class="pointer fas fa-shopping-cart fa-2x"></i>
+        <img src="../assets/cart.svg" alt />
       </div>
     </div>
   </div>
@@ -155,6 +159,7 @@ export default {
       justify-content: center;
       align-items: center;
       cursor: pointer;
+      letter-spacing: 1px;
 
       &:hover {
         background: white;
@@ -192,6 +197,7 @@ export default {
   }
 
   .user-icon {
+    margin: 0 1rem;
     position: relative;
 
     .dropdown {
@@ -230,15 +236,15 @@ export default {
     .num-items {
       position: absolute;
       background: var(--greenColor);
-      border: 1px solid white;
+      // border: 1px solid white;
       display: flex;
       line-height: 0;
       justify-content: center;
       align-items: center;
       color: white;
       font-size: 0.7em;
-      font-weight: 700;
-      right: 10px;
+      font-weight: 900;
+      right: 0;
       top: 0;
       width: 20px;
       height: 20px;
