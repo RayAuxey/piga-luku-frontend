@@ -18,9 +18,9 @@
       </button>
       <div class="chooser" @click="isLogin = !isLogin">
         {{
-        isLogin
-        ? "Don't have an account? Sign Up"
-        : "Already have an account? Log In"
+          isLogin
+            ? "Don't have an account? Sign Up"
+            : "Already have an account? Log In"
         }}
       </div>
     </form>
@@ -39,7 +39,7 @@ export default {
     password: "",
     firstname: "",
     lastname: "",
-    loading: false
+    loading: false,
   }),
   methods: {
     ...mapMutations(["setUser"]),
@@ -67,20 +67,20 @@ export default {
             email: this.email,
             password: this.password,
             firstname: this.firstname,
-            lastname: this.lastname
+            lastname: this.lastname,
           }
         );
         this.setUser(res.data);
         this.$router.push({
-          name: "Home"
+          name: "Home",
         });
       } catch (error) {
         alert("Please make sure you entered correct credetials");
         // console.log(error.message);
       }
       this.loading = false;
-    }
-  }
+    },
+  },
 };
 </script>
 
