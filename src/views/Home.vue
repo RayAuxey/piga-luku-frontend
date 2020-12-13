@@ -54,7 +54,7 @@ export default {
     ...mapState(["currentUser"]),
   },
   head: {
-    title: { inner: "Home | Newwell Music" },
+    title: { inner: "Home | PigaLuku - Boy's Fashion" },
     meta: [
       {
         hid: "og:type",
@@ -64,31 +64,29 @@ export default {
       {
         hid: "og:title",
         property: "og:title",
-        content: `No. 1 Smart Music Distributor`,
+        content: `The One Stop Shop For Boy's Fashion`,
       },
       {
         hid: "og:description",
         property: "og:description",
-        content: `Newwell music links artists with leading digital streaming platforms like Apple Music, Deezer, Spotify, Tidal and more apps found on smart devices - IOS, Android and the web.`,
+        content: `PigaLuku is the best online shop for real G's to find what best fits their style.`,
       },
       {
         hid: "og:image",
         property: "og:image",
         itemprop: "image",
-        content:
-          "https://storage.googleapis.com/newwell-storage/images/KYC/1604179484909-95dhz",
+        content: "https://ibb.co/JK5tWMW",
       },
       {
         hid: "og:image:secure_url",
         property: "og:image:secure_url",
         itemprop: "image",
-        content:
-          "https://storage.googleapis.com/newwell-storage/images/KYC/1604179484909-95dhz",
+        content: "https://ibb.co/JK5tWMW",
       },
       {
         hid: "og:url",
         property: "og:url",
-        content: `https://newwellmusic.com`,
+        content: `https://rayauxey.tech`,
       },
       {
         hid: "twitter:card",

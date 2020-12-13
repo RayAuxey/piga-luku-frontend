@@ -52,18 +52,60 @@ import Product from "@/components/cart/Product.vue";
 
 export default {
   components: {
-    Product
+    Product,
   },
   computed: {
-    ...mapState(["bagProducts", "subTotal", "currentUser"])
+    ...mapState(["bagProducts", "subTotal", "currentUser"]),
   },
   mounted() {
     if (this.currentUser == null) {
       this.$router.push({
-        name: "SignIn"
+        name: "SignIn",
       });
     }
-  }
+  },
+  head: {
+    title: { inner: "Cart | PigaLuku - Boy's Fashion" },
+    meta: [
+      {
+        hid: "og:type",
+        property: "og:type",
+        content: `website`,
+      },
+      {
+        hid: "og:title",
+        property: "og:title",
+        content: `The One Stop Shop For Boy's Fashion`,
+      },
+      {
+        hid: "og:description",
+        property: "og:description",
+        content: `PigaLuku is the best online shop for real G's to find what best fits their style.`,
+      },
+      {
+        hid: "og:image",
+        property: "og:image",
+        itemprop: "image",
+        content: "https://ibb.co/JK5tWMW",
+      },
+      {
+        hid: "og:image:secure_url",
+        property: "og:image:secure_url",
+        itemprop: "image",
+        content: "https://ibb.co/JK5tWMW",
+      },
+      {
+        hid: "og:url",
+        property: "og:url",
+        content: `https://rayauxey.tech`,
+      },
+      {
+        hid: "twitter:card",
+        property: "twitter:card",
+        content: `summary_large_image`,
+      },
+    ],
+  },
 };
 </script>
 

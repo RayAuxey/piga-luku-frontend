@@ -11,7 +11,11 @@
     </div>
 
     <div v-else-if="products.length > 0" class="products">
-      <Product v-for="product in products" :key="product._id" :product="product" />
+      <Product
+        v-for="product in products"
+        :key="product._id"
+        :product="product"
+      />
     </div>
 
     <div v-else class="no-result">No Results for {{ search }}</div>
@@ -28,11 +32,11 @@ export default {
   data: () => ({
     products: [],
     loading: false,
-    search: ""
+    search: "",
   }),
   components: {
     Product,
-    LoadingSpinner
+    LoadingSpinner,
   },
   methods: {
     async fetchProducts(search) {
@@ -45,21 +49,21 @@ export default {
         );
         this.products = res.data;
       } catch (error) {
-        console.log(error.message);
+        // console.log(error.message);
       }
       this.loading = false;
-    }
+    },
   },
   created() {
     if (this.currentUser == null) {
       this.$router.push({
-        name: "SignIn"
+        name: "SignIn",
       });
     }
     this.fetchProducts();
   },
   computed: {
-    ...mapState(["currentUser"])
+    ...mapState(["currentUser"]),
   },
   watch: {
     "$route.params.type": function() {
@@ -68,8 +72,50 @@ export default {
     },
     search(val) {
       this.fetchProducts(val);
-    }
-  }
+    },
+  },
+  head: {
+    title: { inner: "Product List | PigaLuku - Boy's Fashion" },
+    meta: [
+      {
+        hid: "og:type",
+        property: "og:type",
+        content: `website`,
+      },
+      {
+        hid: "og:title",
+        property: "og:title",
+        content: `The One Stop Shop For Boy's Fashion`,
+      },
+      {
+        hid: "og:description",
+        property: "og:description",
+        content: `PigaLuku is the best online shop for real G's to find what best fits their style.`,
+      },
+      {
+        hid: "og:image",
+        property: "og:image",
+        itemprop: "image",
+        content: "https://ibb.co/JK5tWMW",
+      },
+      {
+        hid: "og:image:secure_url",
+        property: "og:image:secure_url",
+        itemprop: "image",
+        content: "https://ibb.co/JK5tWMW",
+      },
+      {
+        hid: "og:url",
+        property: "og:url",
+        content: `https://rayauxey.tech`,
+      },
+      {
+        hid: "twitter:card",
+        property: "twitter:card",
+        content: `summary_large_image`,
+      },
+    ],
+  },
 };
 </script>
 

@@ -6,9 +6,12 @@
         <img src="../assets/protoje.jpg" alt />
         <div class="name">Raymond Nyaga</div>
         <div class="role">Chief Executive Officer</div>
-        <div
-          class="description"
-        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero tenetur voluptate laborum sed et earum. Natus quisquam culpa eaque. Nostrum nihil nisi officiis et aliquid sint voluptas cum a repellendus.</div>
+        <div class="description">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
+          tenetur voluptate laborum sed et earum. Natus quisquam culpa eaque.
+          Nostrum nihil nisi officiis et aliquid sint voluptas cum a
+          repellendus.
+        </div>
       </div>
       <div class="member">
         <img
@@ -17,9 +20,12 @@
         />
         <div class="name">Elon Musk</div>
         <div class="role">Chief Technology Officer</div>
-        <div
-          class="description"
-        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero tenetur voluptate laborum sed et earum. Natus quisquam culpa eaque. Nostrum nihil nisi officiis et aliquid sint voluptas cum a repellendus.</div>
+        <div class="description">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
+          tenetur voluptate laborum sed et earum. Natus quisquam culpa eaque.
+          Nostrum nihil nisi officiis et aliquid sint voluptas cum a
+          repellendus.
+        </div>
       </div>
       <div class="member">
         <img
@@ -28,9 +34,12 @@
         />
         <div class="name">Dan Mase</div>
         <div class="role">Lead Designer</div>
-        <div
-          class="description"
-        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero tenetur voluptate laborum sed et earum. Natus quisquam culpa eaque. Nostrum nihil nisi officiis et aliquid sint voluptas cum a repellendus.</div>
+        <div class="description">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
+          tenetur voluptate laborum sed et earum. Natus quisquam culpa eaque.
+          Nostrum nihil nisi officiis et aliquid sint voluptas cum a
+          repellendus.
+        </div>
       </div>
       <div class="member">
         <img
@@ -39,9 +48,12 @@
         />
         <div class="name">Billie Eilish</div>
         <div class="role">Head of Curation</div>
-        <div
-          class="description"
-        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero tenetur voluptate laborum sed et earum. Natus quisquam culpa eaque. Nostrum nihil nisi officiis et aliquid sint voluptas cum a repellendus.</div>
+        <div class="description">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
+          tenetur voluptate laborum sed et earum. Natus quisquam culpa eaque.
+          Nostrum nihil nisi officiis et aliquid sint voluptas cum a
+          repellendus.
+        </div>
       </div>
       <div class="member">
         <img
@@ -50,24 +62,76 @@
         />
         <div class="name">Rihanna</div>
         <div class="role">Head of Public Relations</div>
-        <div
-          class="description"
-        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero tenetur voluptate laborum sed et earum. Natus quisquam culpa eaque. Nostrum nihil nisi officiis et aliquid sint voluptas cum a repellendus.</div>
+        <div class="description">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
+          tenetur voluptate laborum sed et earum. Natus quisquam culpa eaque.
+          Nostrum nihil nisi officiis et aliquid sint voluptas cum a
+          repellendus.
+        </div>
       </div>
       <div class="member">
-        <img src="https://pbs.twimg.com/profile_images/962887110377201664/FgaRNez0.jpg" alt />
+        <img
+          src="https://pbs.twimg.com/profile_images/962887110377201664/FgaRNez0.jpg"
+          alt
+        />
         <div class="name">Jay Manuel</div>
         <div class="role">Fashion Designer</div>
-        <div
-          class="description"
-        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero tenetur voluptate laborum sed et earum. Natus quisquam culpa eaque. Nostrum nihil nisi officiis et aliquid sint voluptas cum a repellendus.</div>
+        <div class="description">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
+          tenetur voluptate laborum sed et earum. Natus quisquam culpa eaque.
+          Nostrum nihil nisi officiis et aliquid sint voluptas cum a
+          repellendus.
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  head: {
+    title: { inner: "Team | PigaLuku - Boy's Fashion" },
+    meta: [
+      {
+        hid: "og:type",
+        property: "og:type",
+        content: `website`,
+      },
+      {
+        hid: "og:title",
+        property: "og:title",
+        content: `The One Stop Shop For Boy's Fashion`,
+      },
+      {
+        hid: "og:description",
+        property: "og:description",
+        content: `PigaLuku is the best online shop for real G's to find what best fits their style.`,
+      },
+      {
+        hid: "og:image",
+        property: "og:image",
+        itemprop: "image",
+        content: "https://ibb.co/JK5tWMW",
+      },
+      {
+        hid: "og:image:secure_url",
+        property: "og:image:secure_url",
+        itemprop: "image",
+        content: "https://ibb.co/JK5tWMW",
+      },
+      {
+        hid: "og:url",
+        property: "og:url",
+        content: `https://rayauxey.tech`,
+      },
+      {
+        hid: "twitter:card",
+        property: "twitter:card",
+        content: `summary_large_image`,
+      },
+    ],
+  },
+};
 </script>
 
 <style lang="scss" scoped>

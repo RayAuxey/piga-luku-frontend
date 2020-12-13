@@ -27,22 +27,26 @@
               <option>XL</option>
             </template>
             <template v-else>
-              <option v-for="i in 6" :selected="i === 1" :key="i">UK {{ 6 + i }}</option>
+              <option v-for="i in 6" :selected="i === 1" :key="i"
+                >UK {{ 6 + i }}</option
+              >
             </template>
           </select>
         </div>
 
-        <button
-          @click="addProduct"
-          class="add"
-          :class="{ added: isAdded }"
-        >{{ !isAdded ? "ADD TO BAG" : "ADDED" }}</button>
+        <button @click="addProduct" class="add" :class="{ added: isAdded }">
+          {{ !isAdded ? "ADD TO BAG" : "ADDED" }}
+        </button>
 
         <div class="product-details">
           <div class="title">PRODUCT DETAILS</div>
-          <div class="item" style="letter-spacing: 1px">{{ selectedProduct.description }}</div>
+          <div class="item" style="letter-spacing: 1px">
+            {{ selectedProduct.description }}
+          </div>
           <ul>
-            <li v-for="feature in selectedProduct.features" :key="feature">{{ feature }}</li>
+            <li v-for="feature in selectedProduct.features" :key="feature">
+              {{ feature }}
+            </li>
           </ul>
         </div>
       </div>
@@ -57,12 +61,12 @@ export default {
   data: () => ({
     isAdded: false,
     size: "SM",
-    color: "RED"
+    color: "RED",
   }),
   mounted() {
     if (this.currentUser == null) {
       this.$router.push({
-        name: "SignIn"
+        name: "SignIn",
       });
     }
     this.checkIfInBag();
@@ -75,9 +79,9 @@ export default {
     ...mapMutations(["addToBag"]),
     checkIfInBag() {
       this.isAdded = this.bagProducts.some(
-        p => p._id === this.selectedProduct._id
+        (p) => p._id === this.selectedProduct._id
       );
-      console.log(this.isAdded);
+      // console.log(this.isAdded);
     },
     addProduct() {
       if (!this.isAdded) {
@@ -85,15 +89,57 @@ export default {
           ...this.selectedProduct,
           color: this.color,
           size: this.size,
-          quantity: 1
+          quantity: 1,
         });
         this.checkIfInBag();
       }
-    }
+    },
   },
   computed: {
-    ...mapState(["selectedProduct", "bagProducts", "currentUser"])
-  }
+    ...mapState(["selectedProduct", "bagProducts", "currentUser"]),
+  },
+  head: {
+    title: { inner: "Product Page | PigaLuku - Boy's Fashion" },
+    meta: [
+      {
+        hid: "og:type",
+        property: "og:type",
+        content: `website`,
+      },
+      {
+        hid: "og:title",
+        property: "og:title",
+        content: `The One Stop Shop For Boy's Fashion`,
+      },
+      {
+        hid: "og:description",
+        property: "og:description",
+        content: `PigaLuku is the best online shop for real G's to find what best fits their style.`,
+      },
+      {
+        hid: "og:image",
+        property: "og:image",
+        itemprop: "image",
+        content: "https://ibb.co/JK5tWMW",
+      },
+      {
+        hid: "og:image:secure_url",
+        property: "og:image:secure_url",
+        itemprop: "image",
+        content: "https://ibb.co/JK5tWMW",
+      },
+      {
+        hid: "og:url",
+        property: "og:url",
+        content: `https://rayauxey.tech`,
+      },
+      {
+        hid: "twitter:card",
+        property: "twitter:card",
+        content: `summary_large_image`,
+      },
+    ],
+  },
 };
 </script>
 

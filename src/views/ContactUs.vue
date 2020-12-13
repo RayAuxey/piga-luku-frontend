@@ -1,7 +1,10 @@
 <template>
   <div class="contact">
     <div class="title">SEND US AN EMAIL</div>
-    <p>We’re here 7 days a week to help you. We’ll get back to you as soon as we can.</p>
+    <p>
+      We’re here 7 days a week to help you. We’ll get back to you as soon as we
+      can.
+    </p>
     <form @submit.prevent>
       <div class="form-control">
         <label>First Name</label>
@@ -36,8 +39,50 @@
 import { mapState } from "vuex";
 export default {
   computed: {
-    ...mapState(["currentUser"])
-  }
+    ...mapState(["currentUser"]),
+  },
+  head: {
+    title: { inner: "Contact Us | PigaLuku - Boy's Fashion" },
+    meta: [
+      {
+        hid: "og:type",
+        property: "og:type",
+        content: `website`,
+      },
+      {
+        hid: "og:title",
+        property: "og:title",
+        content: `The One Stop Shop For Boy's Fashion`,
+      },
+      {
+        hid: "og:description",
+        property: "og:description",
+        content: `PigaLuku is the best online shop for real G's to find what best fits their style.`,
+      },
+      {
+        hid: "og:image",
+        property: "og:image",
+        itemprop: "image",
+        content: "https://ibb.co/JK5tWMW",
+      },
+      {
+        hid: "og:image:secure_url",
+        property: "og:image:secure_url",
+        itemprop: "image",
+        content: "https://ibb.co/JK5tWMW",
+      },
+      {
+        hid: "og:url",
+        property: "og:url",
+        content: `https://rayauxey.tech`,
+      },
+      {
+        hid: "twitter:card",
+        property: "twitter:card",
+        content: `summary_large_image`,
+      },
+    ],
+  },
 };
 </script>
 
