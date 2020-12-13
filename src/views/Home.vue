@@ -41,18 +41,62 @@ import { mapState } from "vuex";
 export default {
   components: {
     Hero,
-    Explainer
+    Explainer,
   },
   mounted() {
     if (this.currentUser == null) {
       this.$router.push({
-        name: "SignIn"
+        name: "SignIn",
       });
     }
   },
   computed: {
-    ...mapState(["currentUser"])
-  }
+    ...mapState(["currentUser"]),
+  },
+  head: {
+    title: { inner: "Home | Newwell Music" },
+    meta: [
+      {
+        hid: "og:type",
+        property: "og:type",
+        content: `website`,
+      },
+      {
+        hid: "og:title",
+        property: "og:title",
+        content: `No. 1 Smart Music Distributor`,
+      },
+      {
+        hid: "og:description",
+        property: "og:description",
+        content: `Newwell music links artists with leading digital streaming platforms like Apple Music, Deezer, Spotify, Tidal and more apps found on smart devices - IOS, Android and the web.`,
+      },
+      {
+        hid: "og:image",
+        property: "og:image",
+        itemprop: "image",
+        content:
+          "https://storage.googleapis.com/newwell-storage/images/KYC/1604179484909-95dhz",
+      },
+      {
+        hid: "og:image:secure_url",
+        property: "og:image:secure_url",
+        itemprop: "image",
+        content:
+          "https://storage.googleapis.com/newwell-storage/images/KYC/1604179484909-95dhz",
+      },
+      {
+        hid: "og:url",
+        property: "og:url",
+        content: `https://newwellmusic.com`,
+      },
+      {
+        hid: "twitter:card",
+        property: "twitter:card",
+        content: `summary_large_image`,
+      },
+    ],
+  },
 };
 </script>
 

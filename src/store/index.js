@@ -10,7 +10,14 @@ export default new Vuex.Store({
     selectedProduct: {},
     bagProducts: [],
     subTotal: 0,
-    currentUser: null
+    currentUser: {
+      _id: "5e861410693b697c20d64ae4",
+      email: "user@example.com",
+      password: "$2a$10$5QffKTxSsst6OKn6RkLe3OnKO0Pg0GUHykqccVcH7QMuGcVyVMy52",
+      firstname: "Example",
+      lastname: "User",
+      __v: 0,
+    },
   },
   mutations: {
     setUser(state, payload) {
@@ -45,9 +52,9 @@ export default new Vuex.Store({
     },
     setSize(state, payload) {
       state.bagProducts[payload.index].size = payload.size;
-    }
+    },
   },
   actions: {},
   modules: {},
-  plugins: [createPersistedState()]
+  plugins: [createPersistedState()],
 });
